@@ -9,7 +9,7 @@ pipeline{
 
    stage('Build') {
     steps{
-      sh 'echo ${PROJECTNAME}'
+      sh 'env'
     }
    }
 
