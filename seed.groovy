@@ -17,4 +17,4 @@ pipelineJob('frontend-ci') {
             'lightweight'(true)
         }
     }
-}.
+}
