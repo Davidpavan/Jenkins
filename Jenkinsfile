@@ -5,7 +5,7 @@ pipeline{
     PROJECT_NAME = "ROBOSHOP"
   }
   tools {
-          maven 'apache-maven-3.6.3'
+          maven 'mvn-3.6.3'
       }
 
   stages{
