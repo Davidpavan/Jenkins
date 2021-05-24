@@ -3,7 +3,7 @@ pipeline{
 
   environment{
     PROJECT_NAME = "ROBOSHOP"
-    UBUNTU_SSH_CRED = credentails('ubuntu-ssh')
+    UBUNTU_SSH_CRED = credentails('UBUNTU_SSH')
   }
 
   stages{
