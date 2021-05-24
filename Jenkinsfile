@@ -2,13 +2,15 @@ pipeline{
   agent any
 
   environment{
-    PROJECTNAME = "ROBOSHOP"
+    PROJECT_NAME = "ROBOSHOP"
+    UBUNTU_SSH_CRED = credentails('ubuntu-ssh')
   }
 
   stages{
 
    stage('Build') {
     steps{
+      sh 'echo ${PROJECT_NAME}'
       sh 'env'
     }
    }
