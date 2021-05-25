@@ -72,7 +72,7 @@ pipelineJob('CI-Pipelines/user-ci') {
             'scm'(class:'hudson.plugins.git.GitSCM',plugin:'git') {
                 'userRemoteConfigs' {
                     'hudson.plugins.git.UserRemoteConfig' {
-                        'url'('https://github.com/Davidpavan/user.git')
+                        'url'('https://github.com/Davidpavan/users.git')
                     }
                 }
                 'branches' {
