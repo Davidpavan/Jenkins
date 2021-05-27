@@ -17,6 +17,7 @@ def call() {
             stage('Preparing Artifacts'){
                 steps{
                     sh '''
+                    echo ${COMPONENT}
                     zip -r frontend.zip *
                     '''
                 }
