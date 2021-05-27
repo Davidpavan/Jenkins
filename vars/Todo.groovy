@@ -66,6 +66,30 @@ def call(Map params = [:]) {
                     zip -r ${COMPONENT}.zip ${COMPONENT}.jar
                    '''
                 }
+
+                stages{
+
+                    stage('Downloading Dependencies'){
+                        when{
+                            environment name: 'APP_TYPE', value: 'NODEJS'
+                        }
+                        steps{
+                            sh '''
+                            npm install
+                            '''
+                        }
+                    }
+
+                    stage('Preparing Artifacts'){
+                        when{
+                            environment name: 'APP_TYPE', value: 'NODEJS'
+                        }
+                        steps{
+                            sh '''
+                            zip -r todo.zip node_modules server.js
+                            '''
+                        }
+                    }
             }
             stage('Upload Artifacts'){
                 steps{
