@@ -78,7 +78,7 @@ def call(Map params = [:]) {
                 }
             }
 
-            stage('Preparing Artifacts'){
+            stage('Converting to zipfile'){
                 when{
                     environment name: 'APP_TYPE', value: 'NODEJS'
                 }
