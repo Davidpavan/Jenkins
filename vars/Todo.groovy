@@ -67,8 +67,6 @@ def call(Map params = [:]) {
                    '''
                 }
 
-                stages{
-
                     stage('Downloading Dependencies'){
                         when{
                             environment name: 'APP_TYPE', value: 'NODEJS'
@@ -79,8 +77,7 @@ def call(Map params = [:]) {
                             '''
                         }
                     }
-
-                    stage('Preparing Artifacts'){
+                stage('Preparing Artifacts'){
                         when{
                             environment name: 'APP_TYPE', value: 'NODEJS'
                         }
@@ -90,7 +87,6 @@ def call(Map params = [:]) {
                             '''
                         }
                     }
-            }
             stage('Upload Artifacts'){
                 steps{
                     script{
