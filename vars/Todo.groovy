@@ -78,13 +78,13 @@ def call(Map params = [:]) {
                 }
             }
 
-            stage('Converting to zipfile'){
+            stage('Preparing Artifacts-NODEJS'){
                 when{
                     environment name: 'APP_TYPE', value: 'NODEJS'
                 }
                 steps{
                     sh '''
-                    zip -r todo.zip node_modules server.js
+                    zip -r ${COMPONENT}.zip node_modules server.js
                     '''
                 }
             }
