@@ -1,15 +1,14 @@
 def call(Map params = [:]) {
     // Start Default Arguments
     def args = [
-            NEXUS_IP               : 'some',
+            NEXUS_IP               : 'somee',
     ]
     args << params
 
     // End Default + Required Arguments
     pipeline{
-        agent any
-        environment{
-            COMPONENT = "${args.COMPONENT}"
+        agent{
+            label 'JAVA'
         }
         stages{
             stage('Preparing Artifacts'){
@@ -22,7 +21,6 @@ def call(Map params = [:]) {
             stage('Preparing Artifacts'){
                 steps{
                     sh '''
-                    echo ${COMPONENT}
                     zip -r frontend.zip *
                     '''
                 }
