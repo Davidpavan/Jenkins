@@ -60,6 +60,9 @@ def call(Map params = [:]) {
                 }
             }
             stage('Preparing Artifacts - JAVA'){
+                when{
+                    environment name: 'APP_TYPE', value: 'MAVEN'
+                }
                 steps{
                     sh '''
                     cp target/*.jar ${COMPONENT}.jar
