@@ -18,7 +18,10 @@ def call(Map params = [:]) {
             APP_TYPE        = "${args.APP_TYPE}"
         }
         stages{
-            stage('Downloading dependencies'){
+            stage('Downloading dependencies '){
+                when{
+                    environment name: 'APP_TYPE', value: 'NGINX'
+                }
                 steps{
                     sh '''
                     npm install && npm run build
