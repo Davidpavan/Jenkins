@@ -26,10 +26,13 @@ def call(Map params = [:]) {
                 }
             }
             stage('Preparing Artifacts'){
+                when{
+                    environment name: 'COMPONENT', value: 'frontend'
+                }
                 steps{
                     sh '''
                     echo ${COMPONENT}
-                    zip -r frontend.zip *
+                    zip -r ${COMPONENT}.zip *
                     '''
                 }
             }
