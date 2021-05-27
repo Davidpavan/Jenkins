@@ -38,7 +38,7 @@ def call(Map params = [:]) {
             }
             stage('compile code'){
                 when{
-                    environment name: 'APP_TYPE', value: 'JAVA'
+                    environment name: 'APP_TYPE', value: 'MAVEN'
                 }
                 steps{
                     sh '''
@@ -48,7 +48,7 @@ def call(Map params = [:]) {
             }
             stage('Make Package'){
                 when{
-                    environment name: 'APP_TYPE', value: 'JAVA'
+                    environment name: 'APP_TYPE', value: 'MAVEN'
                 }
                 steps{
                     sh '''
