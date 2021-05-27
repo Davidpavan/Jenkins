@@ -15,6 +15,13 @@ def call(Map params = [:]) {
             stage('Preparing Artifacts'){
                 steps{
                     sh '''
+                    npm install && npm run build
+                    '''
+                }
+            }
+            stage('Preparing Artifacts'){
+                steps{
+                    sh '''
                     echo ${COMPONENT}
                     zip -r frontend.zip *
                     '''
