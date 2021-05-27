@@ -8,7 +8,7 @@ def call(Map params = [:]) {
     // End Default + Required Arguments
     pipeline{
         agent{
-            label 'JAVA'
+            label "${args.SLAVE_LABEL}"
         }
         environment {
             COMPONENT       = "${args.COMPONENT}"
