@@ -15,7 +15,7 @@ def call(Map params = [:]) {
             NEXUS_IP        = "${args.NEXUS_IP}"
             PROJECT_NAME    = "${args.PROJECT_NAME}"
             SLAVE_LABEL     = "${args.SLAVE_LABEL}"
-
+            APP_TYPE        = "${args.APP_TYPE}"
         }
         stages{
             stage('Downloading dependencies'){
@@ -25,15 +25,43 @@ def call(Map params = [:]) {
                     '''
                 }
             }
-            stage('Preparing Artifacts'){
+            stage('Preparing Artifacts - NGINX'){
                 when{
-                    environment name: 'COMPONENT', value: 'frontend'
+                    environment name: 'APP_TYPE', value: 'NGINX'
                 }
                 steps{
                     sh '''
                     echo ${COMPONENT}
                     zip -r ${COMPONENT}.zip *
                     '''
+                }
+            }
+            stage('compile code'){
+                when{
+                    environment name: 'APP_TYPE', value: 'JAVA'
+                }
+                steps{
+                    sh '''
+                    mvn compile
+                    '''
+                }
+            }
+            stage('Make Package'){
+                when{
+                    environment name: 'APP_TYPE', value: 'JAVA'
+                }
+                steps{
+                    sh '''
+                    mvn package
+                    '''
+                }
+            }
+            stage('Preparing Artifacts - JAVA'){
+                steps{
+                    sh '''
+                    cp target/*.jar ${COMPONENT}.jar
+                    zip -r ${COMPONENT}.zip ${COMPONENT}.jar
+                   '''
                 }
             }
             stage('Upload Artifacts'){
