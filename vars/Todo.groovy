@@ -22,59 +22,15 @@ def call(Map params = [:]) {
             GO111MODULE     = 'on'
         }
         stages{
-            stage('Downloading dependencies '){
-                when{
-                    environment name: 'APP_TYPE', value: 'NGINX'
-                }
+            stage('Build code & Downloading dependencies '){
                 steps{
-                    sh '''
-                    npm install && npm run build
-                    '''
+                    script{
+                        build = new nexus()
+                        build.code_build ("${APP_TYPE}" , "${COMPONENT}")
+                    }
                 }
             }
 
-            stage('Downloading dependencies'){
-                when{
-                    environment name: 'APP_TYPE', value: 'GO'
-                }
-                steps{
-                    sh '''
-                    go build
-                    '''
-                }
-            }
-
-            stage('compile code'){
-                when{
-                    environment name: 'APP_TYPE', value: 'MAVEN'
-                }
-                steps{
-                    sh '''
-                    mvn compile
-                    '''
-                }
-            }
-            stage('Make Package'){
-                when{
-                    environment name: 'APP_TYPE', value: 'MAVEN'
-                }
-                steps{
-                    sh '''
-                    mvn package
-                    '''
-                }
-            }
-
-            stage('Downloading Dependencies'){
-                when{
-                    environment name: 'APP_TYPE', value: 'NODEJS'
-                }
-                steps{
-                    sh '''
-                    npm install
-                    '''
-                }
-            }
             stage('Preparing Artifacts'){
 
                 steps{

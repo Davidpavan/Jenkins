@@ -22,3 +22,23 @@ def make_artifacts(APP_TYPE, COMPONENT){
         print execute_com
     }
 }
+
+def code_build(APP_TYPE, COMPONENT){
+    if(APP_TYPE == "NGINX"){
+        command = "npm install && npm run build"
+        def execute_com=sh(returnStdout: true, script: command)
+        print execute_com
+    } else if(APP_TYPE == "GO"){
+        command = "go build"
+        def execute_com=sh(returnStdout: true, script: command)
+        print execute_com
+    } else if(APP_TYPE == "JAVA"){
+        command = "mvn clean compile package"
+        def execute_com=sh(returnStdout: true, script: command)
+        print execute_com
+    } else if(APP_TYPE == "NODEJS"){
+        command = "npm install"
+        def execute_com=sh(returnStdout: true, script: command)
+        print execute_com
+    }
+}
