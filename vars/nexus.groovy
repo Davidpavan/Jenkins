@@ -3,7 +3,7 @@ def nexus(COMPONENT) {
     def execute_state=sh(returnStdout: true, script: command)
 }
 
-def make_artifacts(APP_TYPE, component){
+def make_artifacts(APP_TYPE, COMPONENT){
     if(APP_TYPE == "NGINX"){
         command = "echo ${COMPONENT} && zip -r ${COMPONENT}.zip *"
         def execute_com=sh(returnStdout: true, script: command)
