@@ -32,17 +32,6 @@ def call(Map params = [:]) {
                     '''
                 }
             }
-            stage('Preparing Artifacts - NGINX'){
-                when{
-                    environment name: 'APP_TYPE', value: 'NGINX'
-                }
-                steps{
-                    sh '''
-                    echo ${COMPONENT}
-                    zip -r ${COMPONENT}.zip *
-                    '''
-                }
-            }
 
             stage('Downloading dependencies'){
                 when{
@@ -54,16 +43,7 @@ def call(Map params = [:]) {
                     '''
                 }
             }
-            stage('Preparing Artifacts - GO'){
-                when{
-                    environment name: 'APP_TYPE', value: 'GO'
-                }
-                steps{
-                    sh '''
-                    zip -r ${COMPONENT}.zip *
-                    '''
-                }
-            }
+
             stage('compile code'){
                 when{
                     environment name: 'APP_TYPE', value: 'MAVEN'
@@ -84,17 +64,6 @@ def call(Map params = [:]) {
                     '''
                 }
             }
-            stage('Preparing Artifacts - JAVA'){
-                when{
-                    environment name: 'APP_TYPE', value: 'MAVEN'
-                }
-                steps{
-                    sh '''
-                    cp target/*.jar ${COMPONENT}.jar
-                    zip -r ${COMPONENT}.zip ${COMPONENT}.jar
-                   '''
-                }
-            }
 
             stage('Downloading Dependencies'){
                 when{
@@ -106,17 +75,20 @@ def call(Map params = [:]) {
                     '''
                 }
             }
+            stage('Preparing Artifacts - NGINX'){
 
-            stage('Preparing Artifacts-NODEJS'){
-                when{
-                    environment name: 'APP_TYPE', value: 'NODEJS'
-                }
                 steps{
+                    script{
+                        prepare = new nexus()
+                        prepare.make_artifacts "${COMPONENT}"
+                    }
                     sh '''
-                    zip -r ${COMPONENT}.zip node_modules server.js
+                    ls
                     '''
                 }
             }
+
+
             stage('Upload Artifacts'){
                 steps{
                     script{
