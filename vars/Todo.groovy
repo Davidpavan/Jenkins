@@ -75,7 +75,7 @@ def call(Map params = [:]) {
                     '''
                 }
             }
-            stage('Preparing Artifacts - NGINX'){
+            stage('Preparing Artifacts'){
 
                 steps{
                     script{
