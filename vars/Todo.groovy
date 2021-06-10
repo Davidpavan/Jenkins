@@ -11,7 +11,7 @@ def call(Map params = [:]) {
             label "${args.SLAVE_LABEL}"
         }
         triggers {
-            pollSCM('*/2 * * * 1-5')
+            pollSCM('* * * * 1-5')
         }
         tools {
             go 'Go 1.11.4'
