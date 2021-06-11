@@ -9,12 +9,13 @@ pipelineJob('CI-Pipelines/frontend-ci') {
             'scm'(class:'hudson.plugins.git.GitSCM',plugin:'git') {
                 'userRemoteConfigs' {
                     'hudson.plugins.git.UserRemoteConfig' {
+                        'refspec'('\'+refs/tags/*\':\'refs/remotes/origin/tags/*\'')
                         'url'('https://github.com/Davidpavan/frontend.git')
                     }
                 }
                 'branches' {
                     'hudson.plugins.git.BranchSpec' {
-                        'name'('*/main')
+                        'name'('*/tags/*')
                     }
                 }
             }
