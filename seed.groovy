@@ -12,6 +12,7 @@ pipelineJob('CI-Pipelines/frontend-ci') {
                     'ignorePostCommitHooks'(false)
                 }
             }
+        }
             flowdefinition << delegate.'definition'(class:'org.jenkinsci.plugins.workflow.cps.CpsScmFlowDefinition',plugin:'workflow-cps') {
             'scm'(class:'hudson.plugins.git.GitSCM',plugin:'git') {
                 'userRemoteConfigs' {
@@ -41,6 +42,7 @@ pipelineJob('CI-Pipelines/todo-ci') {
                     'ignorePostCommitHooks'(false)
                 }
             }
+        }
             flowdefinition << delegate.'definition'(class:'org.jenkinsci.plugins.workflow.cps.CpsScmFlowDefinition',plugin:'workflow-cps') {
             'scm'(class:'hudson.plugins.git.GitSCM',plugin:'git') {
                 'userRemoteConfigs' {
@@ -70,6 +72,7 @@ pipelineJob('CI-Pipelines/login-ci') {
                     'ignorePostCommitHooks'(false)
                 }
             }
+        }
             flowdefinition << delegate.'definition'(class:'org.jenkinsci.plugins.workflow.cps.CpsScmFlowDefinition',plugin:'workflow-cps') {
             'scm'(class:'hudson.plugins.git.GitSCM',plugin:'git') {
                 'userRemoteConfigs' {
@@ -99,6 +102,7 @@ pipelineJob('CI-Pipelines/user-ci') {
                     'ignorePostCommitHooks'(false)
                 }
             }
+        }
             flowdefinition << delegate.'definition'(class:'org.jenkinsci.plugins.workflow.cps.CpsScmFlowDefinition',plugin:'workflow-cps') {
             'scm'(class:'hudson.plugins.git.GitSCM',plugin:'git') {
                 'userRemoteConfigs' {
