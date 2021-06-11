@@ -8,7 +8,7 @@ pipelineJob('CI-Pipelines/frontend-ci') {
         flowdefinition / 'properties' << 'org.jenkinsci.plugins.workflow.job.properties.PipelineTriggersJobProperty' {
             'triggers' {
                 'hudson.triggers.SCMTrigger' {
-                    'spec'('* * * * 1-5')
+                    'spec'('*/2 * * * 1-5')
                     'ignorePostCommitHooks'(false)
                 }
             }
@@ -38,7 +38,7 @@ pipelineJob('CI-Pipelines/todo-ci') {
         flowdefinition / 'properties' << 'org.jenkinsci.plugins.workflow.job.properties.PipelineTriggersJobProperty' {
             'triggers' {
                 'hudson.triggers.SCMTrigger' {
-                    'spec'('* * * * 1-5')
+                    'spec'('*/2 * * * 1-5')
                     'ignorePostCommitHooks'(false)
                 }
             }
@@ -68,7 +68,7 @@ pipelineJob('CI-Pipelines/login-ci') {
         flowdefinition / 'properties' << 'org.jenkinsci.plugins.workflow.job.properties.PipelineTriggersJobProperty' {
             'triggers' {
                 'hudson.triggers.SCMTrigger' {
-                    'spec'('* * * * 1-5')
+                    'spec'('*/2 * * * 1-5')
                     'ignorePostCommitHooks'(false)
                 }
             }
@@ -98,7 +98,7 @@ pipelineJob('CI-Pipelines/user-ci') {
         flowdefinition / 'properties' << 'org.jenkinsci.plugins.workflow.job.properties.PipelineTriggersJobProperty' {
             'triggers' {
                 'hudson.triggers.SCMTrigger' {
-                    'spec'('* * * * 1-5')
+                    'spec'('*/2 * * * 1-5')
                     'ignorePostCommitHooks'(false)
                 }
             }
