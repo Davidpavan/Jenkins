@@ -52,7 +52,7 @@ def call(Map params = [:]) {
                 steps{
                     script{
                         upload = new nexus()
-                        upload.nexus (COMPONENT)
+                        upload.nexus ("${COMPONENT}")
                     }
                 }
             }
