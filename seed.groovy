@@ -13,7 +13,7 @@ for (i in 0..count) {
           flowdefinition / 'properties' << 'org.jenkinsci.plugins.workflow.job.properties.PipelineTriggersJobProperty' {
               'triggers' {
                   'hudson.triggers.SCMTrigger' {
-                      'pollSCM'('* * * * 1-5')
+                      'scm'('* * * * 1-5')
                       'ignorePostCommitHooks'(false)
                   }
               }
