@@ -19,7 +19,7 @@ def make_artifacts(APP_TYPE, COMPONENT){
         command = "zip -r ${FILENAME} ."
         def execute_com=sh(returnStdout: true, script: command)
         print execute_com
-    } else if(APP_TYPE == "JAVA"){
+    } else if(APP_TYPE == "MAVEN"){
         command = "cp target/*.jar ${COMPONENT}.jar && zip -r ${FILENAME} ${COMPONENT}.jar"
         def execute_com=sh(returnStdout: true, script: command)
         print execute_com
