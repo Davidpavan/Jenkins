@@ -5,6 +5,8 @@ pipeline {
 
         parameters {
            choice(name: 'Env', choices: ['dev', 'prod'], description: 'Select Environment')
+           string(name: 'COMPONENT', defaultValue: '', description: 'which component to deploy')
+           string(name: 'VERSION', defaultValue: '', description: 'which version to deploy')
            }
 
            stages {
