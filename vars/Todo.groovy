@@ -48,14 +48,14 @@ def call(Map params = [:]) {
             }
 
 
-            stage('Upload Artifacts'){
-                steps{
-                    script{
-                        upload = new nexus()
-                        upload.nexus ("${COMPONENT}")
-                    }
-                }
-            }
+//            stage('Upload Artifacts'){
+//                steps{
+//                    script{
+//                        upload = new nexus()
+//                        upload.nexus ("${COMPONENT}")
+//                    }
+//                }
+//            }
             stage('Deploy to Env'){
                 steps{
                     ls
