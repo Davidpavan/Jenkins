@@ -56,6 +56,12 @@ def call(Map params = [:]) {
                     }
                 }
             }
+            stage('Deploy to Env'){
+                steps{
+                    ls
+                }
+            }
+
         }
     }
 }
