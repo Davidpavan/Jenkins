@@ -58,4 +58,4 @@ pipelineJob("Deployment Pipeline") {
             'lightweight'(true)
         }
     }
-}
+  }
