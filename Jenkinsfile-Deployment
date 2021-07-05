@@ -23,7 +23,7 @@ pipeline {
                   }
                }
 
-               stage('Deploy to prod Env'){
+               stage('Deploy to PROD Env'){
                     when {
                       environment name: 'Env', value: 'dev'
                     }
