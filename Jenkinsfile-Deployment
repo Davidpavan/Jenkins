@@ -15,14 +15,18 @@ pipeline {
                }
 
                stage('Deploy to DEV Env'){
-                  when{....}
+                  when {
+                     environment name: 'Env', value: 'dev'
+                  }
                   steps{
                       sh ' ansible-playbook ..... '
                   }
                }
 
                stage('Deploy to DEV Env'){
-                  when{....}
+                    when {
+                      environment name: 'Env', value: 'dev'
+                    }
                     steps{
                        sh ' ansible-playbook ..... '
                     }
