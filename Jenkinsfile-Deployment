@@ -2,6 +2,9 @@ pipeline {
     agent {
         label 'Ansible'
         }
+        environment {
+                        UBUNTU_SSH_PASSWORD = credentials('UBUNTU_SSH_PASSWORD')
+                    }
 
         parameters {
            choice(name: 'ENV', choices: ['dev', 'prod'], description: 'Select Environment')
@@ -12,7 +15,9 @@ pipeline {
            stages {
                stage('find the server'){
                     steps{
-                         sh 'echo'
+                        sh '''
+                         aws ec2 describe-instances --filters "Name=tag:Name,Values=${COMPONENT}-${ENV}" --region us-east-1 | jq. Reservations[].Instances[].PrivateIpAddress |xargs -n1 > inventory
+                         '''
                     }
                }
 
@@ -21,7 +26,9 @@ pipeline {
                      environment name: 'Env', value: 'dev'
                   }
                   steps{
-                      sh 'echo ansible-playbook .....'
+                      sh '''
+                        ansible-playbook -i inventory todo.yml -t ${COMPONENT} -e COMPONENT=${COMPONENT} -e ENV={ENV} -e APP_VERSION={VERSION} -e ansible_password=${UBUNTU_SSH_PASSWORD}
+                      '''
                   }
                }
 
