@@ -19,7 +19,7 @@ pipeline {
                      environment name: 'Env', value: 'dev'
                   }
                   steps{
-                      sh ' ansible-playbook ..... '
+                      sh 'ansible-playbook .....'
                   }
                }
 
@@ -28,7 +28,8 @@ pipeline {
                       environment name: 'Env', value: 'dev'
                     }
                     steps{
-                       sh ' ansible-playbook ..... '
+                       sh 'ansible-playbook .....'
                     }
                }
+           }
 }
