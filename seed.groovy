@@ -59,4 +59,3 @@ pipelineJob("Deployment Pipeline") {
         }
     }
 }
-}
