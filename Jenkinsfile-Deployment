@@ -1,0 +1,29 @@
+pipeline {
+    agent {
+        label 'Ansible'
+        }
+
+        parameters {
+           choice(name: 'Env', choices: ['dev', 'prod'], description: 'Select Environment')
+           }
+
+           stages {
+               stage('find the server'){
+                    steps{
+                         echo
+                    }
+               }
+
+               stage('Deploy to DEV Env'){
+                  when{....}
+                  steps{
+                      sh ' ansible-playbook ..... '
+                  }
+               }
+
+               stage('Deploy to DEV Env'){
+                  when{....}
+                    steps{
+                       sh ' ansible-playbook ..... '
+                    }
+               }
