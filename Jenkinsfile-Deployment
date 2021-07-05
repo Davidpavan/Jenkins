@@ -26,6 +26,7 @@ pipeline {
                      environment name: 'Env', value: 'dev'
                   }
                   steps{
+                     git branch: 'main', url: 'https://github.com/Davidpavan/Jenkins.git'
                       sh '''
                         ansible-playbook -i inventory todo.yml -t ${COMPONENT} -e COMPONENT=${COMPONENT} -e ENV={ENV} -e APP_VERSION={VERSION} -u ubuntu -e ansible_password=${UBUNTU_SSH_PASSWORD}
                       '''
