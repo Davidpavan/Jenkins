@@ -10,7 +10,7 @@ pipeline {
            stages {
                stage('find the server'){
                     steps{
-                         echo
+                         sh 'echo'
                     }
                }
 
