@@ -1,6 +1,6 @@
 pipeline {
     agent {
-        label 'Ansible'
+        label 'ANSIBLE'
         }
         environment {
                         UBUNTU_SSH_PASSWORD = credentials('UBUNTU_SSH_PASSWORD')
