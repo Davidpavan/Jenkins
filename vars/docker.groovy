@@ -25,7 +25,7 @@ def call(Map params = [:]) {
                 steps{
                     script{
                      sh '''
-                       ls
+                       docker build -t todo .
                      '''
                     }
                 }
