@@ -35,6 +35,18 @@ def call(Map params = [:]) {
                 }
             }
 
+            stage('Docker push'){
+                steps{
+                    script {
+                        get_branch = "env | grep GIT_BRANCH | awk -F / '{print \$NF}' | xargs echo -n"
+                        env.get_branch_exec=sh(returnStdout: true, script: get_branch)
+                    }
+                    sh '''
+                       docker push -t 808790164949.dkr.ecr.us-east-1.amazonaws.com/todo:${get_branch_exec}
+                     '''
+
+                }
+            }
         }
     }
 }
