@@ -1,11 +1,10 @@
 def call(Map params = [:]) {
-    // Start Default Arguments
+
     def args = [
-            SLAVE_LABEL               : "DOCKER"
+            SLAVE_LABEL : "DOCKER"
     ]
     args << params
 
-    // End Default + Required Arguments
     pipeline{
         agent{
             node {
@@ -22,12 +21,12 @@ def call(Map params = [:]) {
             APP_TYPE        = "${args.APP_TYPE}"
         }
         stages{
-            stage('Build code & Downloading dependencies '){
+            stage('Docker Build'){
                 steps{
                     script{
-                        sh '''
-                          docker build -t local .
-                        '''
+                     sh '''
+                       ls
+                     '''
                     }
                 }
             }
