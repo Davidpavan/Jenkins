@@ -42,7 +42,7 @@ def call(Map params = [:]) {
                         env.get_branch_exec=sh(returnStdout: true, script: get_branch)
                     }
                     sh '''
-                       docker push -t 808790164949.dkr.ecr.us-east-1.amazonaws.com/todo:${get_branch_exec}
+                       docker push 808790164949.dkr.ecr.us-east-1.amazonaws.com/todo:${get_branch_exec}
                      '''
 
                 }
