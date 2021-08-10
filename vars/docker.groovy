@@ -23,7 +23,7 @@ def call(Map params = [:]) {
         stages{
             stage('Docker Build'){
                 steps{
-                    steps{
+                    script {
                         get_branch = "env | grep GIT_BRANCH | awk -F / '{print \$NF}' | xargs echo -n"
                         env.get_branch_exec=sh(returnStdout: true, script: get_branch)
                     }
