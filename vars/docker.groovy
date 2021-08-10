@@ -23,11 +23,15 @@ def call(Map params = [:]) {
         stages{
             stage('Docker Build'){
                 steps{
-                    script{
-                     sh '''
-                       docker build -t todo .
-                     '''
+                    steps{
+                        get_branch = "env | grep GIT_BRANCH | awk -F / '{print \$NF}' | xargs echo -n"
+                        env.get_branch_exec=sh(returnStdout: true, script: get_branch)
                     }
+                     sh '''
+                       aws ecr get-login-password --region us-east-1 | docker login --username AWS --password-stdin 808790164949.dkr.ecr.us-east-1.amazonaws.com
+                       docker build -t 808790164949.dkr.ecr.us-east-1.amazonaws.com/todo:${get_branch_exec} .
+                     '''
+
                 }
             }
 
